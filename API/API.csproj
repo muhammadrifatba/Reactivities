@@ -11,5 +11,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.12" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+  </ItemGroup>
 
 </Project>

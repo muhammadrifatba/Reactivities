@@ -7,17 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Activities\Commands\DeleteActivity" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Persistence\Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Activities\" />
     <Folder Include="Activities\Queries\" />
+    <Folder Include="Activities\Validators\" />
+    <Folder Include="Core\" />
   </ItemGroup>
 
 </Project>

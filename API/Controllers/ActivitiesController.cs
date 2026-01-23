@@ -1,3 +1,5 @@
+using Application.Activities.Commands;
+using Application.Activities.DTOs;
 using Application.Activities.Queries;
 using Domain;
 using MediatR;
@@ -7,20 +9,38 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActivitiesController( IMediator mediator) : BaseApiController
+    public class ActivitiesController : BaseApiController
     {
         [HttpGet]
 
         public async Task<ActionResult<List<Activity>>> GetActivities()
         {
-            return await mediator.Send(new GetActivityList.Query());
+            return await Mediator.Send(new GetActivityList.Query());
         }  
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Activity>> GetActivity(string id)
         {
-            
-           return await mediator.Send(new GetActivityDetails.Query{ Id = id });
+            return HandleResult(await Mediator.Send(new GetActivityDetails.Query { Id = id }));
+           
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<string>> CreateActivity(CreateActivityDto activityDto)
+        {
+           return HandleResult(await Mediator.Send(new CreateActivity.Command{ ActivityDto = activityDto }));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateActivity(Activity activity)
+        {
+            return HandleResult(await Mediator.Send(new EditAcitvity.Command{ Activity = activity }));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteActivity(string id)
+        {
+            return HandleResult(await Mediator.Send(new DeleteActivity.Command { Id = id }));
         }
     }
 }
