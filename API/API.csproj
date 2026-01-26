@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.12" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DTOs\" />
     <Folder Include="Middleware\" />
   </ItemGroup>
 
