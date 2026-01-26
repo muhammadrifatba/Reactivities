@@ -21,8 +21,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Activity>> GetActivity(string id)
         {
-            return HandleResult(await Mediator.Send(new GetActivityDetails.Query { Id = id }));
-           
+            return HandleResult(await Mediator.Send(new GetActivityDetails.Query { Id = id }));          
         }
 
         [HttpPost]
@@ -32,9 +31,9 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateActivity(Activity activity)
+        public async Task<IActionResult> UpdateActivity(EditActivityDto activityDto)
         {
-            return HandleResult(await Mediator.Send(new EditAcitvity.Command{ Activity = activity }));
+            return HandleResult(await Mediator.Send(new EditActivity.Command{ ActivityDto = activityDto }));
         }
 
         [HttpDelete("{id}")]
