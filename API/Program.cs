@@ -2,8 +2,10 @@ using API.Middleware;
 using Application.Activities.Queries;
 using Application.Activities.Validators;
 using Application.Core;
+using Application.Interfaces;
 using Domain;
 using FluentValidation;
+using Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -26,6 +28,9 @@ builder.Services.AddMediatR(x=>
     x.RegisterServicesFromAssemblyContaining<GetActivityList.Handler>();
     x.AddOpenBehavior(typeof(ValidationBehaviour<,>));
 });
+
+builder.Services.AddScoped<IUserAccessor, UserAccessor>();
+
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {

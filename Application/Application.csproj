@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="Activities\Queries\" />
     <Folder Include="Core\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 
 </Project>
